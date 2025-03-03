@@ -313,8 +313,52 @@
                                 <br>
                                 <div id="vsb_content" class="contentDetail" style="width: 100%; font-size: 16px;">
                                     <div class="v_news_content">
+                                        <!--在这里插入表-->
+                                        <?php
+    // MySQL数据库连接设置
+    $servername = "8.140.204.59";
+    $username = "root";
+    $password = "1234qwer";
+    $dbname = "puddle"; // 替换为你的数据库名称
 
-                                    
+    // 创建连接
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // 检查连接
+    if ($conn->connect_error) {
+        die("连接失败: " . $conn->connect_error);
+    }
+
+    // 查询数据
+    $sql = "SELECT name, id, academy FROM firstprize"; // 如果需要其他字段，比如年龄，记得加入 SELECT 中
+    $result = $conn->query($sql);
+
+    // 如果有数据，生成表格
+    if ($result->num_rows > 0) {
+        echo "<table style='width: 50%; border-collapse: collapse; margin: 0 auto; font-size: 18px; text-align: center;'>
+                <tr>
+                    <th style='border: 1px solid #ddd; padding: 8px; background-color: #8B0000; color: white;'>姓名</th>
+                    <th style='border: 1px solid #ddd; padding: 8px; background-color: #8B0000; color: white;'>学号</th>
+                    <th style='border: 1px solid #ddd; padding: 8px; background-color: #8B0000; color: white;'>学院</th>
+                </tr>";
+
+        // 输出每一行数据
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>". $row["name"] ."</td>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>". $row["id"] ."</td>
+                    <td style='border: 1px solid #ddd; padding: 8px;'>". $row["academy"] ."</td>
+                  </tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "没有数据";
+    }
+
+    // 关闭连接
+    $conn->close();
+?>
+
                                     </div>
                                 </div>
                             </div>
