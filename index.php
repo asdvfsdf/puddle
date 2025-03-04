@@ -12,8 +12,48 @@
     <script src="./images/bootstrap.min.js.下载"></script>
 
     <style>
-        th {
+        body {
+            font-family: Arial, sans-serif; /* 设置通用字体 */
+            background-color: #f4f4f9; /* 设置页面背景色 */
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 80%;
+            margin: 50px auto;
+            border-collapse: collapse; /* 合并表格边框 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+            border-radius: 8px; /* 圆角 */
+            background-color: #ffffff; /* 设置背景为白色 */
+        }
+
+        th, td {
             text-align: center;
+            padding: 12px 20px; /* 添加内边距 */
+            border: 1px solid #ddd; /* 边框颜色 */
+        }
+
+        th {
+            background-color: #8B0000; /* 表头背景色 */
+            color: white; /* 表头文字颜色 */
+            font-size: 18px;
+            font-weight: bold; /* 设置表头字体加粗 */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* 为偶数行设置背景色 */
+        }
+
+        tr:hover {
+            background-color: #ddd; /* 鼠标悬停时改变行背景色 */
+            cursor: pointer; /* 鼠标悬停时显示手型 */
+        }
+
+        caption {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333; /* 设置标题颜色 */
         }
     </style>
 
