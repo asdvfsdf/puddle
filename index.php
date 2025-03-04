@@ -15,46 +15,7 @@
     <script src="./images/jquery.min.js.下载"></script>
     <script src="./images/bootstrap.min.js.下载"></script>
 
-    <style>
-        /* 仅对表格部分的样式进行设置，避免影响其他部分 */
-        .styled-table {
-            width: 80%;
-            margin: 50px auto;
-            border-collapse: collapse;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            background-color: #ffffff;
-        }
-
-        .styled-table th,
-        .styled-table td {
-            text-align: center;
-            padding: 12px 20px;
-            border: 1px solid #ddd;
-        }
-
-        .styled-table th {
-            background-color: #8B0000;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .styled-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .styled-table tr:hover {
-            background-color: #ddd;
-            cursor: pointer;
-        }
-
-        .styled-table caption {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-    </style>
+    
 
 </head>
 
@@ -388,7 +349,7 @@
                                                 if ($result->num_rows > 0) {
                                                     // 输出表格，使用CSS来美化
                                                     echo "<table style='width: 80%; margin: 50px auto; border: 1px solid #ddd; text-align: center; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);'>";
-                                                    echo "<tr><th style='background-color: #8B0000; color: white; padding: 12px;'>姓名</th><th style='background-color: #8B0000; color: white; padding: 12px;'>学号</th><th style='background-color: #8B0000; color: white; padding: 12px;'>学院</th></tr>";
+                                                    echo "<tr><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>姓名</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学号</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学院</th></tr>";
 
                                                     // 输出每一行数据
                                                     while ($row = $result->fetch_assoc()) {
