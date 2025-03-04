@@ -343,18 +343,18 @@
                                                     $conn->set_charset("utf8mb4");
                                                 }
 
-                                                $sql = "SELECT name, id, academy FROM firstprize"; // 替换为你需要的查询
+                                                $sql = "SELECT name, id, academy FROM firstprize"; 
                                                 $result = $conn->query($sql);
                                                 
                                                 echo "<div style='text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;'>一等奖</div>";
 
 
                                                 if ($result->num_rows > 0) {
-                                                    // 输出表格，使用CSS来美化
+                                                    
                                                     echo "<table style='width: 80%; margin: 50px auto; border: 1px solid #ddd; text-align: center; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);'>";
                                                     echo "<tr><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>姓名</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学号</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学院</th></tr>";
 
-                                                    // 输出每一行数据
+                                                    
                                                     while ($row = $result->fetch_assoc()) {
                                                         echo "<tr><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["name"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["id"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["academy"] . "</td></tr>";
                                                     }
@@ -364,6 +364,68 @@
                                                     echo "没有数据";
                                                 }
 
+                                                $sql = "SELECT name, id, academy FROM secondprize"; 
+                                                $result = $conn->query($sql);
+                                                
+                                                echo "<div style='text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;'>二等奖</div>";
+
+
+                                                if ($result->num_rows > 0) {
+                                                    
+                                                    echo "<table style='width: 80%; margin: 50px auto; border: 1px solid #ddd; text-align: center; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);'>";
+                                                    echo "<tr><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>姓名</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学号</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学院</th></tr>";
+
+                                                    
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        echo "<tr><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["name"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["id"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["academy"] . "</td></tr>";
+                                                    }
+
+                                                    echo "</table>";
+                                                } else {
+                                                    echo "没有数据";
+                                                }
+
+                                                $sql = "SELECT name, id, academy FROM thirdprize"; 
+                                                $result = $conn->query($sql);
+                                                
+                                                echo "<div style='text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;'>三等奖</div>";
+
+
+                                                if ($result->num_rows > 0) {
+                                                    
+                                                    echo "<table style='width: 80%; margin: 50px auto; border: 1px solid #ddd; text-align: center; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);'>";
+                                                    echo "<tr><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>姓名</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学号</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学院</th></tr>";
+
+                                                    
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        echo "<tr><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["name"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["id"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["academy"] . "</td></tr>";
+                                                    }
+
+                                                    echo "</table>";
+                                                } else {
+                                                    echo "没有数据";
+                                                }
+
+                                                $sql = "SELECT name, id, academy FROM execellentprize"; 
+                                                $result = $conn->query($sql);
+                                                
+                                                echo "<div style='text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;'>优秀奖</div>";
+
+
+                                                if ($result->num_rows > 0) {
+                                                    
+                                                    echo "<table style='width: 80%; margin: 50px auto; border: 1px solid #ddd; text-align: center; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);'>";
+                                                    echo "<tr><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>姓名</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学号</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学院</th></tr>";
+
+                                                    
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        echo "<tr><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["name"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["id"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["academy"] . "</td></tr>";
+                                                    }
+
+                                                    echo "</table>";
+                                                } else {
+                                                    echo "没有数据";
+                                                }
 
                                                 // 关闭连接
                                                 $conn->close();
