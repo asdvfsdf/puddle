@@ -345,6 +345,9 @@
 
                                                 $sql = "SELECT name, id, academy FROM firstprize"; // 替换为你需要的查询
                                                 $result = $conn->query($sql);
+                                                
+                                                echo "<div style='text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;'>一等奖</div>";
+
 
                                                 if ($result->num_rows > 0) {
                                                     // 输出表格，使用CSS来美化
