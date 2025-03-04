@@ -10,7 +10,16 @@
     <link href="./images/main.css" rel="stylesheet">
     <!--[if lt IE 9]><script r='m'>document.createElement("section")</script><![endif]--><script src="./images/jquery.min.js.下载"></script>
     <script src="./images/bootstrap.min.js.下载"></script>
+
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
+
 </head>
+
+
 
 <body>
     <div id="contentDetail">
