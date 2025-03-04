@@ -2,6 +2,22 @@
 <!-- saved from url=(0052)https://bwb.lzu.edu.cn/html/read/article_2741.html## -->
 <html lang="zh-CN">
 
+<?php
+// 连接 Redis
+$redis = new Redis();
+$redis->connect('127.0.0.1', 6379);  // 连接本地 Redis 服务器
+
+// 访问统计的 Key
+$page_key = "page_views"; 
+
+// 增加访问计数
+$redis->incr($page_key);
+
+// 获取当前访问量
+$visit_count = $redis->get($page_key);
+
+?>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
