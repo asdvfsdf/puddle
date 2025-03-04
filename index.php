@@ -330,6 +330,7 @@
                                                 die("连接失败: " . $conn->connect_error);
                                             }else{
                                                 error_log("数据库连接成功", 3, "db_log.txt");
+                                                $conn->set_charset("utf8mb4");
                                             }
 
                                             $sql = "SELECT name, id, academy FROM firstprize"; // 替换为你需要的查询
