@@ -28,7 +28,7 @@
             background-color: #ffffff; /* 设置背景为白色 */
         }
 
-        th, td {
+        th {
             text-align: center;
             padding: 12px 20px; /* 添加内边距 */
             border: 1px solid #ddd; /* 边框颜色 */
