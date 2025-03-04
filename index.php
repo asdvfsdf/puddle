@@ -331,6 +331,21 @@
                                             }else{
                                                 error_log("数据库连接成功", 3, "db_log.txt");
                                             }
+
+                                            $sql = "SELECT name, id, academy FROM firstprize"; // 替换为你需要的查询
+                                            $result = $conn->query($sql);
+
+                                            if ($result->num_rows > 0) {
+                                                echo "<table style='width: 100%; border: 1px solid #ddd; text-align: center;'>";
+                                                echo "<tr><th>姓名</th><th>学号</th><th>学院</th></tr>";
+                    
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo "<tr><td>" . $row["name"] . "</td><td>" . $row["id"] . "</td><td>" . $row["academy"] . "</td></tr>";
+                                                }
+                                                echo "</table>";
+                                            } else {
+                                                echo "没有数据";
+                                            }
                                             ?>
 
                                         </body>
