@@ -293,6 +293,15 @@ $visit_count = $redis->get($page_key);
                     Menu('.in_mbtn', '.navm'); //手机版导航
                 });
             </script>
+
+            <div>
+                <form id="so-top" class="so right mob-none" action="//oldnews.lzu.edu.cn/search/" method="get" target="_blank">
+                    <input type="hidden" name="human" value="yes">
+                    <input type="text" id="so" value="" name="q" placeholder="请输入关键词..." />
+                    <button type="submit"><i class="ico ico-so"></i></button>
+                </form>
+            </div>
+
             <div style="display: flex;justify-content: center;align-items: center;">
                 <div class="row bwb-detail-row">
                     <br>
@@ -350,7 +359,7 @@ $visit_count = $redis->get($page_key);
                                                 // 创建连接
                                                 $conn = new mysqli($servername, $username, $password, $dbname);
 
-                                                // 这里可以做一个可以进行日志注入的点，记录连接的数据库名
+                                                // 这里可以做一个可以进行日志注入的点，记录连接的数据库名,日志注入看来只能做一些简单的欺骗，很难对其进行引导
                                                 if ($conn->connect_error) {
                                                     die("连接失败: " . $conn->connect_error);
                                                 } else {
