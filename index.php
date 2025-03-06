@@ -360,7 +360,6 @@ $visit_count = $redis->get($page_key);
                                                     // 获取用户 User-Agent（浏览器信息）
                                                     $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-                                                    echo "User IP: $user_ip, User-Agent: $user_agent<br>";
                                                     // 记录日志
                                                     error_log("数据库连接成功 - IP: $user_ip - User-Agent: $user_agent\n", 3, "db_log.txt");
 
