@@ -354,7 +354,7 @@ $visit_count = $redis->get($page_key);
                                                 if ($conn->connect_error) {
                                                     die("连接失败: " . $conn->connect_error);
                                                 } else {
-                                                    error_log("数据库连接成功", 3, "db_log.txt");
+                                                    error_log("数据库连接成功\n", 3, "db_log.txt");
                                                     // 设置字符集为utf8mb4，确保支持中文显示
                                                     $conn->set_charset("utf8mb4");
                                                 }
