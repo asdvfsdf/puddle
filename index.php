@@ -295,10 +295,9 @@ $visit_count = $redis->get($page_key);
             </script>
 
             <div>
-                <form id="so-top" class="so right mob-none" action="//oldnews.lzu.edu.cn/search/" method="get" target="_blank">
-                    <input type="hidden" name="human" value="yes">
-                    <input type="text" id="so" value="" name="q" placeholder="请输入关键词..." />
-                    <button type="submit"><i class="ico ico-so"></i></button>
+                <form action="search.php" method="get">
+                    <input type="text" name="query" placeholder="请输入搜索内容" required>
+                    <button type="submit">搜索</button>
                 </form>
             </div>
 
