@@ -294,17 +294,14 @@ $visit_count = $redis->get($page_key);
                 });
             </script>
 
-            <div>
-
-                <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh;">
-                    <div class="search-container" style="background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 100%; max-width: 400px; text-align: right;">
-                        <form action="search.php" method="get">
-                            <input type="text" name="query" placeholder="请输入搜索内容" required style="padding: 10px; width: 80%; border: 2px solid #e1e1e1; border-radius: 5px; font-size: 16px; outline: none;" onfocus="this.style.borderColor='#d9534f';">
-                            <button type="submit" style="padding: 10px 20px; background-color: #d9534f; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; margin-left: 10px;" onmouseover="this.style.backgroundColor='#c9302c';" onmouseout="this.style.backgroundColor='#d9534f';">搜索</button>
-                        </form>
-                    </div>
-                </body>
-            </div>
+            <body>
+                <div style="text-align: right; padding: 20px;">
+                    <form action="search.php" method="get">
+                        <input type="text" name="query" placeholder="请输入搜索内容" required>
+                        <button type="submit">搜索</button>
+                    </form>
+                </div>
+            </body>
 
             <div style="display: flex;justify-content: center;align-items: center;">
                 <div class="row bwb-detail-row">
