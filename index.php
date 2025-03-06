@@ -295,7 +295,7 @@ $visit_count = $redis->get($page_key);
             </script>
 
             <body>
-                <div style="display: flex; justify-content: flex-end; padding: 20px;">
+                <div style="text-align: right; padding: 40px;">
                     <form action="search.php" method="get">
                         <input type="text" name="query" placeholder="请输入搜索内容" required>
                         <button type="submit">搜索</button>
