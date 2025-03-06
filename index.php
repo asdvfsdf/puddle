@@ -294,14 +294,12 @@ $visit_count = $redis->get($page_key);
                 });
             </script>
 
-            <body>
-                <div style="text-align: right; padding: 20px;">
-                    <form action="search.php" method="get">
-                        <input type="text" name="query" placeholder="请输入搜索内容" required>
-                        <button type="submit">搜索</button>
-                    </form>
-                </div>
-            </body>
+            <div style="text-align: right; padding: 20px;">
+                <form action="search.php" method="get">
+                    <input type="text" name="query" placeholder="请输入搜索内容" required>
+                    <button type="submit">搜索</button>
+                </form>
+            </div>
 
             <div style="display: flex;justify-content: center;align-items: center;">
                 <div class="row bwb-detail-row">
