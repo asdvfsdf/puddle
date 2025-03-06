@@ -8,7 +8,7 @@ $redis = new Redis();
 $redis->connect('127.0.0.1', 6379);  // 连接本地 Redis 服务器
 
 // 访问统计的 Key
-$page_key = "page_views"; 
+$page_key = "page_views";
 
 // 增加访问计数
 $redis->incr($page_key);
@@ -31,7 +31,7 @@ $visit_count = $redis->get($page_key);
     <script src="./images/jquery.min.js.下载"></script>
     <script src="./images/bootstrap.min.js.下载"></script>
 
-    
+
 
 </head>
 
@@ -350,27 +350,35 @@ $visit_count = $redis->get($page_key);
                                                 // 创建连接
                                                 $conn = new mysqli($servername, $username, $password, $dbname);
 
-                                                // 检查连接
+                                                // 这里可以做一个可以进行日志注入的点，记录连接的数据库名
                                                 if ($conn->connect_error) {
                                                     die("连接失败: " . $conn->connect_error);
                                                 } else {
-                                                    error_log("数据库连接成功\n", 3, "db_log.txt");
-                                                    // 设置字符集为utf8mb4，确保支持中文显示
+                                                    // 获取用户 IP 地址
+                                                    $user_ip = $_SERVER['REMOTE_ADDR'];
+
+                                                    // 获取用户 User-Agent（浏览器信息）
+                                                    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+                                                    // 记录日志
+                                                    error_log("数据库连接成功 - IP: $user_ip - User-Agent: $user_agent\n", 3, "db_log.txt");
+
+                                                    // 设置字符集
                                                     $conn->set_charset("utf8mb4");
                                                 }
 
-                                                $sql = "SELECT name, id, academy FROM firstprize"; 
+                                                $sql = "SELECT name, id, academy FROM firstprize";
                                                 $result = $conn->query($sql);
-                                                
+
                                                 echo "<div style='text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;'>一等奖</div>";
 
 
                                                 if ($result->num_rows > 0) {
-                                                    
+
                                                     echo "<table style='width: 80%; margin: 50px auto; border: 1px solid #ddd; text-align: center; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);'>";
                                                     echo "<tr><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>姓名</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学号</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学院</th></tr>";
 
-                                                    
+
                                                     while ($row = $result->fetch_assoc()) {
                                                         echo "<tr><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["name"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["id"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["academy"] . "</td></tr>";
                                                     }
@@ -380,18 +388,18 @@ $visit_count = $redis->get($page_key);
                                                     echo "没有数据";
                                                 }
 
-                                                $sql = "SELECT name, id, academy FROM secondprize"; 
+                                                $sql = "SELECT name, id, academy FROM secondprize";
                                                 $result = $conn->query($sql);
-                                                
+
                                                 echo "<div style='text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;'>二等奖</div>";
 
 
                                                 if ($result->num_rows > 0) {
-                                                    
+
                                                     echo "<table style='width: 80%; margin: 50px auto; border: 1px solid #ddd; text-align: center; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);'>";
                                                     echo "<tr><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>姓名</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学号</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学院</th></tr>";
 
-                                                    
+
                                                     while ($row = $result->fetch_assoc()) {
                                                         echo "<tr><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["name"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["id"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["academy"] . "</td></tr>";
                                                     }
@@ -401,18 +409,18 @@ $visit_count = $redis->get($page_key);
                                                     echo "没有数据";
                                                 }
 
-                                                $sql = "SELECT name, id, academy FROM thirdprize"; 
+                                                $sql = "SELECT name, id, academy FROM thirdprize";
                                                 $result = $conn->query($sql);
-                                                
+
                                                 echo "<div style='text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;'>三等奖</div>";
 
 
                                                 if ($result->num_rows > 0) {
-                                                    
+
                                                     echo "<table style='width: 80%; margin: 50px auto; border: 1px solid #ddd; text-align: center; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);'>";
                                                     echo "<tr><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>姓名</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学号</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学院</th></tr>";
 
-                                                    
+
                                                     while ($row = $result->fetch_assoc()) {
                                                         echo "<tr><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["name"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["id"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["academy"] . "</td></tr>";
                                                     }
@@ -422,18 +430,18 @@ $visit_count = $redis->get($page_key);
                                                     echo "没有数据";
                                                 }
 
-                                                $sql = "SELECT name, id, academy FROM execellentprize"; 
+                                                $sql = "SELECT name, id, academy FROM execellentprize";
                                                 $result = $conn->query($sql);
-                                                
+
                                                 echo "<div style='text-align: center; font-size: 24px; font-weight: bold; margin-bottom: 20px;'>优秀奖</div>";
 
 
                                                 if ($result->num_rows > 0) {
-                                                    
+
                                                     echo "<table style='width: 80%; margin: 50px auto; border: 1px solid #ddd; text-align: center; border-collapse: collapse; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);'>";
                                                     echo "<tr><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>姓名</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学号</th><th style='background-color: #8B0000; color: white; padding: 12px; text-align: center;'>学院</th></tr>";
 
-                                                    
+
                                                     while ($row = $result->fetch_assoc()) {
                                                         echo "<tr><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["name"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["id"] . "</td><td style='border: 1px solid #ddd; padding: 12px;'>" . $row["academy"] . "</td></tr>";
                                                     }
