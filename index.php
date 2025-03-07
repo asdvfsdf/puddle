@@ -86,12 +86,13 @@
             <form action="" name="form1" method="post">
                 <input type="text" name="uname" placeholder="用户名" value="" class="input-item">
                 <input type="password" name="passwd" placeholder="密码" value="" class="input-item">
-                <div type="submit" class="btn">登录</div>
-            </form>
+                <button type="submit" class="btn">登录
         </div>
-        <div class="msg">
-            <a href="#">忘记密码？</a>
-        </div>
+        </form>
+    </div>
+    <div class="msg">
+        <a href="#">忘记密码？</a>
+    </div>
     </div>
     </div>
 
