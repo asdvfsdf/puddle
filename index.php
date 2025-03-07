@@ -89,9 +89,9 @@
                 <button type="submit" class="btn">登录
         </div>
         </form>
-    </div>
-    <div class="msg">
-        <a href="#">忘记密码？</a>
+        <div class="msg">
+            <a href="#">忘记密码？</a>
+        </div>
     </div>
     </div>
     </div>
