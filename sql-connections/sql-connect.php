@@ -2,10 +2,6 @@
 // including the Mysql connection parameters
 include("../sql-connections/db-info.inc");
 
-// Open PHP error reporting for debugging
-error_reporting(E_ALL);  // Enable all error reporting
-ini_set('display_errors', 1);  // Display errors
-
 // Use mysqli to connect to the database
 $con = new mysqli($host, $dbuser, $dbpass, $dbname);
 

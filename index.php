@@ -87,60 +87,53 @@
                 <input type="text" name="uname" placeholder="用户名" value="" class="input-item">
                 <input type="password" name="passwd" placeholder="密码" value="" class="input-item">
                 <button type="submit" class="btn">登录</button>
-
+            </form>
         </div>
-        </form>
-        <div class="msg">
-            <a href="#">忘记密码？</a>
-        </div>
-    </div>
-    </div>
-    </div>
 
-    <?php
-    //including the Mysql connect parameters.
-    include("../sql-connections/sql-connect.php");
+        <?php
+        //including the Mysql connect parameters.
+        include("../sql-connections/sql-connect.php");
 
-    // take the variables
-    if (isset($_POST['uname']) && isset($_POST['passwd'])) {
-        $uname = $_POST['uname'];
-        $passwd = $_POST['passwd'];
+        // take the variables
+        if (isset($_POST['uname']) && isset($_POST['passwd'])) {
+            $uname = $_POST['uname'];
+            $passwd = $_POST['passwd'];
 
-        //logging the connection parameters to a file for analysis.
-        $fp = fopen('result.txt', 'a');
-        fwrite($fp, 'User Name:' . $uname);
-        fwrite($fp, 'Password:' . $passwd . "\n");
-        fclose($fp);
+            //logging the connection parameters to a file for analysis.
+            $fp = fopen('result.txt', 'a');
+            fwrite($fp, 'User Name:' . $uname);
+            fwrite($fp, 'Password:' . $passwd . "\n");
+            fclose($fp);
 
 
-        // connectivity 
-        $sql = "SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1";
+            // connectivity 
+            $sql = "SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1";
 
-        if ($stmt = $con->prepare($sql)) {
-            // 绑定参数
-            $stmt->bind_param("ss", $uname, $passwd); // "ss" 表示两个字符串
-            // 执行查询
-            $stmt->execute();
-            // 获取结果
-            $stmt->store_result();
+            if ($stmt = $con->prepare($sql)) {
+                // 绑定参数
+                $stmt->bind_param("ss", $uname, $passwd); // "ss" 表示两个字符串
+                // 执行查询
+                $stmt->execute();
+                // 获取结果
+                $stmt->store_result();
 
-            if ($stmt->num_rows > 0) {
-                // 登录成功时，弹出提示框
-                echo "<script>alert('登录成功！');</script>";
+                if ($stmt->num_rows > 0) {
+                    // 登录成功时，弹出提示框
+                    echo "<script>alert('登录成功！');</script>";
+                } else {
+                    // 登录失败时，弹出提示框
+                    echo "<script>alert('登录失败，用户名或密码错误！');</script>";
+                }
+
+                // 关闭语句
+                $stmt->close();
             } else {
-                // 登录失败时，弹出提示框
-                echo "<script>alert('登录失败，用户名或密码错误！');</script>";
+                // 处理查询准备失败的情况
+                echo "<script>alert('数据库查询失败！');</script>";
             }
-
-            // 关闭语句
-            $stmt->close();
-        } else {
-            // 处理查询准备失败的情况
-            echo "<script>alert('数据库查询失败！');</script>";
         }
-    }
 
-    ?>
+        ?>
 
 </body>
 

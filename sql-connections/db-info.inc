@@ -7,6 +7,4 @@ $dbname ="puddle";
 $host = 'localhost';
 $dbname1 = "challenges";
 
-
-
 ?>
