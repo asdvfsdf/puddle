@@ -86,7 +86,8 @@
             <form action="" name="form1" method="post">
                 <input type="text" name="uname" placeholder="用户名" value="" class="input-item">
                 <input type="password" name="passwd" placeholder="密码" value="" class="input-item">
-                <button type="submit" class="btn">登录
+                <button type="submit" class="btn">登录</button>
+
         </div>
         </form>
         <div class="msg">
@@ -99,7 +100,6 @@
     <?php
     //including the Mysql connect parameters.
     include("../sql-connections/sql-connect.php");
-    error_reporting(0);
 
     // take the variables
     if (isset($_POST['uname']) && isset($_POST['passwd'])) {
@@ -114,7 +114,7 @@
 
 
         // connectivity 
-        @$sql = "SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1";
+        $sql = "SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1";
 
         if ($stmt = $con->prepare($sql)) {
             // 绑定参数
