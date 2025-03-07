@@ -119,32 +119,11 @@
         $row = mysql_fetch_array($result);
 
         if ($row) {
-            //echo '<font color= "#0000ff">';	
-
-            echo "<br>";
-            echo '<font color= "#FFFF00" font size = 4>';
-            //echo " You Have successfully logged in\n\n " ;
-            echo '<font size="3" color="#0000ff">';
-            echo "<br>";
-            echo 'Your Login name:' . $row['username'];
-            echo "<br>";
-            echo 'Your Password:' . $row['password'];
-            echo "<br>";
-            echo "</font>";
-            echo "<br>";
-            echo "<br>";
-            echo '<img src="../images/flag.jpg"  />';
-
-            echo "</font>";
+            // 登录成功时，弹出提示框
+            echo "<script>alert('登录成功！');</script>";
         } else {
-            echo '<font color= "#0000ff" font size="3">';
-            //echo "Try again looser";
-            print_r(mysql_error());
-            echo "</br>";
-            echo "</br>";
-            echo "</br>";
-            echo '<img src="../images/slap.jpg" />';
-            echo "</font>";
+            // 登录失败时，弹出提示框
+            echo "<script>alert('登录失败，用户名或密码错误！');</script>";
         }
     }
 
