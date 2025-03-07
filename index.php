@@ -115,15 +115,28 @@
 
         // connectivity 
         @$sql = "SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1";
-        $result = mysql_query($sql);
-        $row = mysql_fetch_array($result);
 
-        if ($row) {
-            // 登录成功时，弹出提示框
-            echo "<script>alert('登录成功！');</script>";
+        if ($stmt = $con->prepare($sql)) {
+            // 绑定参数
+            $stmt->bind_param("ss", $uname, $passwd); // "ss" 表示两个字符串
+            // 执行查询
+            $stmt->execute();
+            // 获取结果
+            $stmt->store_result();
+
+            if ($stmt->num_rows > 0) {
+                // 登录成功时，弹出提示框
+                echo "<script>alert('登录成功！');</script>";
+            } else {
+                // 登录失败时，弹出提示框
+                echo "<script>alert('登录失败，用户名或密码错误！');</script>";
+            }
+
+            // 关闭语句
+            $stmt->close();
         } else {
-            // 登录失败时，弹出提示框
-            echo "<script>alert('登录失败，用户名或密码错误！');</script>";
+            // 处理查询准备失败的情况
+            echo "<script>alert('数据库查询失败！');</script>";
         }
     }
 

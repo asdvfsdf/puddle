@@ -7,10 +7,11 @@ error_reporting(E_ALL);  // Enable all error reporting
 ini_set('display_errors', 1);  // Display errors
 
 // Use mysqli to connect to the database
-$con = mysqli_connect($host, $dbuser, $dbpass);
+$con = new mysqli($host, $dbuser, $dbpass, $dbname);
+
 
 // Check connection
-if (!$con) {
+if ($con->connect_error) {
     die("Failed to connect to MySQL: " . mysqli_connect_error());
 }
 
