@@ -84,9 +84,9 @@
         <div class="login-wrapper">
             <div class="header">登录</div>
             <div class="form-wrapper">
-                <input type="text" name="username" placeholder="用户名" class="input-item">
-                <input type="password" name="password" placeholder="密码" class="input-item">
-                <div class="btn">登录</div>
+                <input type="text" name="username" placeholder="用户名" value="" class="input-item">
+                <input type="password" name="password" placeholder="密码" value="" class="input-item">
+                <input type="submit" name="submit" value="登录" />
             </div>
             <div class="msg">
                 <a href="#">忘记密码？</a>
