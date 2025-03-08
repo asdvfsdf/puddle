@@ -85,7 +85,7 @@
 
             <div class="header">登录</div>
 
-            <form action="sql-connect.php" name="form1" method="post">
+            <form action="" name="form1" method="post">
                 <input type="text" name="uname" placeholder="用户名" value="" class="input-item">
                 <input type="password" name="passwd" placeholder="密码" value="" class="input-item">
                 <button type="submit" class="btn">登录</button>
@@ -97,5 +97,74 @@
 
 
 </body>
+
+<?php
+
+// MySQL数据库连接设置
+$servername = "localhost";
+$username = "root";
+$password = "1234qwer";
+$dbname = "puddle"; // 替换为你的数据库名称
+
+// 创建连接
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// 这里可以做一个可以进行日志注入的点，记录连接的数据库名,日志注入看来只能做一些简单的欺骗，很难对其进行引导
+if ($conn->connect_error) {
+    die("连接失败: " . $conn->connect_error);
+} else {
+    // 获取用户 IP 地址
+    $user_ip = $_SERVER['REMOTE_ADDR'];
+
+    // 获取用户 User-Agent（浏览器信息）
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+    // 记录日志
+    error_log("数据库连接成功 - IP: $user_ip - User-Agent: $user_agent\n", 3, "db_log.txt");
+
+    // 设置字符集
+    $conn->set_charset("utf8mb4");
+}
+
+if(isset($_POST['uname']) && isset($_POST['passwd'])){
+    
+    $uname1=$_POST['uname'];
+	$passwd1=$_POST['passwd'];
+
+        //echo "username before addslashes is :".$uname1 ."<br>";
+        //echo "Input password before addslashes is : ".$passwd1. "<br>";
+        
+	//logging the connection parameters to a file for analysis.
+	$fp=fopen('result.txt','a');
+	fwrite($fp,'User Name:'.$uname1);
+	fwrite($fp,'Password:'.$passwd1."\n");
+	fclose($fp);
+        
+    $uname = addslashes($uname1);
+    $passwd= addslashes($passwd1);
+        
+    //echo "username after addslashes is :".$uname ."<br>";
+    //echo "Input password after addslashes is : ".$passwd;    
+
+	$sql="SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1";
+	$result=$conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // 如果查询到数据
+        echo '<script>alert("查询到了数据！");</script>';
+        // 输出查询的结果
+        while ($row = $result->fetch_assoc()) {
+            echo "Username: " . $row["username"] . " - Email: " . $row["email"] . "<br>";
+        }
+    } else {
+        // 如果没有查询到数据
+        echo '<script>alert("没有查询到数据！");</script>';
+    }
+	
+}
+
+
+?>
+
 
 </html>
